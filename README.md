@@ -84,8 +84,8 @@ python3 -m hpipy --host exampleData/hostProteins.fasta --pathogen exampleData/pa
   --num_threads 20 \
   --network \
   --outputdir samplePPIs \
-  --interIdentity 40 60 \
-  --interEvalue 1e-15 1e-20 \
+  --interIdentity 40 \
+  --interEvalue 1e-05 \
   --interCoverage 60
 ```
 
@@ -98,8 +98,8 @@ python3 -m hpipy --host exampleData/hostProteins.fasta --pathogen exampleData/pa
   --num_threads 20 \
   --network \
   --outputdir samplePPIs \
-  --interIdentity 70 80 \
-  --interEvalue 1e-25 \
+  --interIdentity 70 \
+  --interEvalue 1e-15 \
   --resume_ppis
 ```
 
