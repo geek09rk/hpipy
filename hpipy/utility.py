@@ -129,7 +129,24 @@ def cdhit(inputFasta, outputdir, outfile):
     if not os.path.exists(cdhitDir):
         os.mkdir(cdhitDir)
 
-    cmd = f"cd-hit -i {inputFasta} -o {cdhitDir}/{outfile} -c {args.seq_homology} > {outputdir}/logs/{outfile.split('.fasta')[0]}_cdhit_out.log"
+    threshold = float(args.seq_homology)
+
+    # Set word length based on identity threshold
+    if 0.7 <= threshold <= 1.0:
+        word_length = 5
+    elif 0.6 <= threshold < 0.7:
+        word_length = 4
+    elif 0.5 <= threshold < 0.6:
+        word_length = 3
+    elif 0.4 <= threshold < 0.5:
+        word_length = 2
+    else:
+        raise ValueError(
+            f"Invalid CD-HIT threshold: {threshold}. "
+            "For protein sequences, supported threshold range is 0.4 to 1.0."
+        )
+
+    cmd = f"cd-hit -i {inputFasta} -o {cdhitDir}/{outfile} -c {threshold} -n {word_length} -T {args.num_threads} > {outputdir}/logs/{outfile.split('.fasta')[0]}_cdhit_out.log"
     os.system(cmd)
 
     clusters_cmd = f'grep -c ">" {cdhitDir}/{outfile}'
