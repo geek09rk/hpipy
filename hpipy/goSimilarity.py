@@ -3,12 +3,13 @@ import subprocess
 import pandas as pd
 import os
 from pathlib import Path
-from rpy2.robjects import r, pandas2ri
+# from rpy2.robjects import r, pandas2ri
+from rpy2.robjects import r
 from rpy2.robjects.packages import importr
 from multiprocessing import Pool, cpu_count
 import gc
 
-pandas2ri.activate()
+# pandas2ri.activate()    # deprecated in newer rpy2
 gosim = importr('GOSemSim')
 
 
