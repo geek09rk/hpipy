@@ -48,7 +48,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 Download the HPIpy package using one of the below options (1 or 2):  
 1. Clone this repository:
 ```
-git clone https://github.com/usubioinfo/hpipy.git
+git clone https://github.com/geek09rk/hpipy.git
 ```  
 2. Obtain package using link:
 ```
